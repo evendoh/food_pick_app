@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_naver_map/flutter_naver_map.dart';
+import 'package:food_pick_app/model/food_store.dart';
+import 'package:food_pick_app/screen/detail_screen.dart';
 import 'package:food_pick_app/screen/edit_screen.dart';
 import 'package:food_pick_app/screen/login_screen.dart';
 import 'package:food_pick_app/screen/main_screen.dart';
 import 'package:food_pick_app/screen/register_screen.dart';
 import 'package:food_pick_app/screen/search_address_screen.dart';
+import 'package:food_pick_app/screen/search_result_screen.dart';
 import 'package:food_pick_app/screen/splash_screen.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -44,6 +47,28 @@ class MyApp extends StatelessWidget {
         '/main': (context) => MainScreen(),
         '/edit': (context) => EditScreen(),
         '/search_address': (context) => SearchAddressScreen(),
+        // '/detail': (context) => DetailScreen(),
+      },
+      onGenerateRoute: (settings) {
+        if (settings.name == '/detail') {
+          FoodStoreModel foodStoreModel = settings.arguments as FoodStoreModel;
+          return MaterialPageRoute(
+            builder: (context) {
+              return DetailScreen(foodStoreModel: foodStoreModel);
+            },
+          );
+        } else if (settings.name == '/search_result') {
+          // 검색 결과
+          List<FoodStoreModel> lstFoodStore =
+              settings.arguments as List<FoodStoreModel>;
+          return MaterialPageRoute(
+            builder: (context) {
+              return SearchResultScreen(
+                lstFoodStore: lstFoodStore,
+              );
+            },
+          );
+        }
       },
     );
   }

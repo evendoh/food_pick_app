@@ -49,6 +49,8 @@ class _TextFormFieldCustomState extends State<TextFormFieldCustom> {
       maxLines: widget.maxLines,
       onFieldSubmitted: widget.onFieldSubmitted,
       decoration: InputDecoration(
+        fillColor: Colors.white,
+        filled: true,
         border: OutlineInputBorder(
           borderSide: BorderSide(
             width: 2,

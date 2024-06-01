@@ -18,3 +18,29 @@ class SectionText extends StatelessWidget {
     );
   }
 }
+
+/// 읽기 전용 텍스트
+class ReadOnlyText extends StatelessWidget {
+  String title;
+  ReadOnlyText({super.key, required this.title});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      decoration: ShapeDecoration(
+        shape: RoundedRectangleBorder(
+          side: const BorderSide(width: 2),
+          borderRadius: BorderRadius.circular(4),
+        ),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Text(
+          title,
+          style: TextStyle(fontSize: 16, color: Colors.black),
+        ),
+      ),
+    );
+  }
+}
